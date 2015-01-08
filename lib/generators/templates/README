@@ -1,0 +1,14 @@
+===============================================================================
+
+There is a setup that you need to do before you can use workflow.
+
+If you want to use ActiveRecord run:
+
+  rails generate workflow:migration
+
+And run
+
+  rake db:migrate
+
+===============================================================================
+
