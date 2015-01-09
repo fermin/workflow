@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
 
   #spec.add_dependency "rails", ">= 4.1"
   spec.add_dependency "railties", ">= 4.1"
-  spec.add_dependency "transitions"
+  #spec.add_dependency "transitions"
 end
