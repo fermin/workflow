@@ -1,4 +1,5 @@
 module Workflow
+  module Rails
   class Routes
     class Mapping
       attr_accessor :controllers, :as, :skips
@@ -17,8 +18,7 @@ module Workflow
 
       def [](routes)
         {
-          controllers: @controllers[routes],
-          as: @as[routes]
+          controllers: @controllers[routes]
         }
       end
 
@@ -26,5 +26,6 @@ module Workflow
         @skips.include?(controller)
       end
     end
+  end
   end
 end

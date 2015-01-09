@@ -1,7 +1,7 @@
 module Workflow
-  class Engine < Rails::Engine
+  class Engine < ::Rails::Engine
     initializer 'workflow.routes' do
-      Doorkeeper::Routes.install!
+      Workflow::Rails::Routes.install!
     end
   end
 end

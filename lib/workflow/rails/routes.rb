@@ -1,4 +1,8 @@
+require 'workflow/rails/routes/mapping'
+require 'workflow/rails/routes/mapper'
+
 module Workflow
+  module Rails
   class Routes
     module Helper
       def use_workflow(options = {}, &block)
@@ -45,5 +49,6 @@ module Workflow
       routes.resources :workflow_work_events, controller: mapping[:controllers], as: :work_events, path: 'work_events'
     end
 
+  end
   end
 end

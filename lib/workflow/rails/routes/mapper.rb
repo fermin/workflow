@@ -1,4 +1,5 @@
 module Workflow
+  module Rails
   class Routes
     class Mapper
       def initialize(mapping = Mapping.new)
@@ -22,5 +23,6 @@ module Workflow
         @mapping.as.merge!(alias_names)
       end
     end
+  end
   end
 end
