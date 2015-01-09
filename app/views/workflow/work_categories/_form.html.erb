@@ -1,6 +1,6 @@
-<%= form_for work_category, url: workflow_work_categories_path, html: {method: :post, class: 'form-horizontal', role: 'form'} do |f| %>
+<%= form_for ["workflow", work_category], html: {class: 'form-horizontal', role: 'form'} do |f| %>
   <% if work_category.errors.any? %>
-    <div class="alert alert-danger" data-alert><p><%= t('doorkeeper.applications.form.error') %></p></div>
+    <div class="alert alert-danger" data-alert><p><%= t('workflow.work_categories.form.error') %></p></div>
   <% end %>
 
   <%= content_tag :div, class: "form-group#{' has-error' if work_category.errors[:name].present?}" do %>

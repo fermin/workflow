@@ -1,69 +1,26 @@
 zh:
   activerecord:
     attributes:
-      workflow/work_category:
+      work_category:
         name: '模型名称'
         column_name: '字段名称'
     errors:
       models:
-        workflow/work_category:
+        work_category:
           attributes:
             column_name:
 
   workflow:
-    applications:
+    work_categories:
       confirmations:
-        destroy: 'Are you sure?'
+        destroy: '确定删除?'
       buttons:
-        edit: 'Edit'
-        destroy: 'Destroy'
-        submit: 'Submit'
-        cancel: 'Cancel'
-        authorize: 'Authorize'
+        edit: '编辑'
+        destroy: '删除'
+        submit: '提交'
+        cancel: '取消'
       form:
-        error: 'Whoops! Check your form for possible errors'
-      help:
-        redirect_uri: 'Use one line per URI'
-        native_redirect_uri: 'Use %{native_redirect_uri} for local tests'
-      edit:
-        title: 'Edit application'
-      index:
-        title: 'Your applications'
-        new: 'New Application'
-        name: 'Name'
-        callback_url: 'Callback URL'
-      new:
-        title: 'New Application'
-      show:
-        title: 'Application: %{name}'
-        application_id: 'Application Id'
-        secret: 'Secret'
-        callback_urls: 'Callback urls'
-        actions: 'Actions'
-
-    authorizations:
-      buttons:
-        authorize: 'Authorize'
-        deny: 'Deny'
-      error:
-        title: 'An error has occurred'
-      new:
-        title: 'Authorize required'
-        prompt: 'Authorize %{client_name} to use your account?'
-        able_to: 'This application will be able to'
-      show:
-        title: 'Authorization code'
-
-    authorized_applications:
-      confirmations:
-        revoke: 'Are you sure?'
-      buttons:
-        revoke: 'Revoke'
-      index:
-        title: 'Your authorized applications'
-        application: 'Application'
-        created_at: 'Created At'
-        date_format: '%Y-%m-%d %H:%M:%S'
+        error: '提交有误请确认后提交'
 
     errors:
       messages:
@@ -99,8 +56,8 @@ zh:
     flash:
       work_categories:
         create:
-          notice: '模型定义成称'
+          notice: '模型定义成功！'
         destroy:
-          notice: '模型定义删除成功'
+          notice: '模型定义删除成功！'
         update:
-          notice: '模型定义更新成功'
+          notice: '模型定义更新成功！'
