@@ -27,17 +27,16 @@ module Workflow
 							end
 						end
 					end
-		    RUBY
 
-		    @@work_category.work_events.where("on_transitions is not null").each do |work_event|
-		    	class_eval <<-RUBY
+					@@work_category.work_events.where("on_transitions is not null").each do |work_event|
 			    	unless self.method_defined? work_event.on_transitions.to_sym
-			    		define_method work_event.on_transitions.to_sym do |*args|  
-			    			WorkProcess.create target: self, event_name: work_event.event_name, event_from: work_event.from, event_to: work_event.to, user_id: args[0], next_user_id: args[1], comment: args[2]
+			    		define_method work_event.on_transitions.to_sym do |options={}|  
+			    			WorkProcess.create target: self, event_name: work_event.event_name, event_from: work_event.from, event_to: work_event.to, user_id: options[:user_id], next_user_id: options[:next_user_id], comment: options[:comment]
 	  					end  
 			    	end
-		    	RUBY
-				end
+					end
+
+		    RUBY
 
 			end
     end
