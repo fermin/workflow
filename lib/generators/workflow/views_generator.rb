@@ -1,7 +1,9 @@
+require 'rails/generators/base'
+
 module Workflow
   module Generators
-    class ViewsGenerator < Rails::Generators::Base
-      source_root File.expand_path('../../app/views', __FILE__)
+    class ViewsGenerator < ::Rails::Generators::Base
+      source_root File.expand_path('../../../../app/views', __FILE__)
 
       desc 'Copies default Workflow views and layouts to your application.'
 

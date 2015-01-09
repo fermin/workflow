@@ -1,4 +1,4 @@
-class CreateWorkflowTabels < ActiveRecord::Migration
+class CreateWorkflow < ActiveRecord::Migration
 	def change
 		create_table :work_categories, comment: "定义哪些Model有流程控制及流程的列名是什么" do |t|
 			t.string :name, comment: "记录模型名称，如：Contract"

@@ -1,18 +1,19 @@
 require 'rails/generators/active_record'
+require 'rails/generators/base'
 
-module Workflow
-  module Generators
-    class MigrationGenerator < Rails::Generators::Base
+class Workflow::MigrationGenerator < ::Rails::Generators::Base
+    include Rails::Generators::Migration
 
-      include Rails::Generators::Migration
-      source_root File.expand_path('../templates', __FILE__)
-      desc 'Installs Workflow migration file.'
+    source_root File.expand_path('../templates', __FILE__)
+    desc 'Installs Workflow migration file.'
 
-      def install
-        migration_template 'migration.rb', 'db/migrate/create_workflow_tables.rb'
-      end
-
+    def install
+      migration_template 'migration.rb', 'db/migrate/create_workflow.rb'
     end
-  end
+
+    def self.next_migration_number(dirname)
+      ActiveRecord::Generators::Base.next_migration_number(dirname)
+    end
+
 end
 

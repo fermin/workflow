@@ -1,4 +1,4 @@
-module Workflow
+require 'active_record'
   class WorkEvent < ActiveRecord::Base
 
 		belongs_to :work_category
@@ -8,4 +8,3 @@ module Workflow
     end
 
   end
-end
