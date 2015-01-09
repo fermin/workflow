@@ -28,7 +28,12 @@ class CreateWorkflow < ActiveRecord::Migration
 		create_table :work_processes, comment: "流程进程" do |t|
 			t.integer :target_id, comment: "多太关联，记录是哪个实例产生的流程"
 			t.string :target_type
+			t.string :comment, limit: 1000
 			t.string :event_name
+			t.string :event_from
+			t.string :event_to
+			t.integer :user_id
+			t.integer :next_user_id
 
 			t.timestamps
 		end

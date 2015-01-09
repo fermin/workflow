@@ -13,7 +13,7 @@
   <%= content_tag :div, class: "form-group#{' has-error' if @work_event.errors[:from].present?}" do %>
     <%= f.label :from, class: 'col-sm-2 control-label' %>
     <div class="col-sm-10">
-      <%= f.select :from, @work_event.work_category.work_items.map{|event| [event.action, event.action]}, class: 'form-control' %>
+      <%= f.text_field :from, class: 'form-control' %>
     </div>
   <% end %>
 

@@ -1,38 +1,68 @@
 <div class="page-header">
-  <h1></h1>
+  <span class="h2">流程控制模型定义</span>
+  <span class="pull-right">
+    <%= link_to "编辑", edit_workflow_work_category_path(@work_category), class: "btn btn-primary" %>
+    <%= link_to "删除", ["workflow",@work_category], class: "btn btn-danger" %>
+  </span>
 </div>
 
 <div class="row">
-  <div class="col-md-8">
-    <h4><%= t('.application_id') %>:</h4>
+  <div class="col-md-12">
+    <h5>模型名称</h5>
 
-    <p><code id="application_id"><%= @application.uid %></code></p>
+    <p><code id="application_id"><%= @work_category.name %></code></p>
 
-    <h4><%= t('.secret') %>:</h4>
+    <h4>字段名称</h4>
 
-    <p><code id="secret"><%= @application.secret %></code></p>
+    <p><code id="secret"><%= @work_category.column_name %></code></p>
 
-    <h4><%= t('.callback_urls') %>:</h4>
+    <div class="row col-md-12">
+      <span class="h4">模型节点</span>
+      <%= link_to "新建节点", new_workflow_work_item_path(work_category_id: @work_category) %>
+    </div>
 
-    <table>
-      <% @application.redirect_uri.split.each do |uri| %>
+    <table class="table">
+      <tr>
+        <th>节点名称</th>
+        <th>节点显示名称</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @work_category.work_items.each do |work_item| %>
         <tr>
-          <td>
-            <code><%= uri %></code>
-          </td>
-          <td>
-            <%= link_to t('doorkeeper.applications.buttons.authorize'), oauth_authorization_path(client_id: @application.uid, redirect_uri: uri, response_type: 'code'), class: 'btn btn-success', target: '_blank' %>
-          </td>
+          <td><%= work_item.action %></td>
+          <td><%= work_item.display %></td>
+          <td><%= link_to "编辑", edit_workflow_work_item_path(work_item) %></td>
+          <td><%= link_to "删除", ["workflow", work_item], method: :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <div class="row col-md-12">
+      <span class="h4">模型事件</span>
+      <%= link_to "新建事件", new_workflow_work_event_path(work_category_id: @work_category) %>
+    </div>
+
+    <table class="table">
+      <tr>
+        <th>事件名称</th>
+        <th>From</th>
+        <th>To</th>
+        <th>Transition</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @work_category.work_events.each do |work_event| %>
+        <tr>
+          <td><%= work_event.event_name %></td>
+          <td><%= work_event.from %></td>
+          <td><%= work_event.to %></td>
+          <td><%= work_event.on_transitions %></td>
+          <td><%= link_to "编辑", edit_workflow_work_event_path(work_event) %></td>
+          <td><%= link_to "删除", ["workflow", work_event], method: :delete %></td>
         </tr>
       <% end %>
     </table>
   </div>
 
-  <div class="col-md-4">
-    <h3><%= t('.actions') %></h3>
-
-    <p><%= link_to t('doorkeeper.applications.buttons.edit'), edit_oauth_application_path(@application), class: 'btn btn-primary' %></p>
-
-    <p><%= render 'delete_form', application: @application, submit_btn_css: 'btn btn-danger' %></p>
-  </div>
 </div>
