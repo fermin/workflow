@@ -8,14 +8,15 @@ module Workflow
     end
 
     def new
-      @work_event = WorkEvent.new
+      @work_category = WorkCategory.find params[:work_category_id]
+      @work_event = @work_category.work_events.build
     end
 
     def create
       @work_event = WorkEvent.new(work_event_params)
       if @work_event.save
         flash[:notice] = I18n.t(:notice, scope: [:workflow, :flash, :work_events, :create])
-        redirect_to work_events_url
+        redirect_to ["workflow", @work_event.work_category]
       else
         render :new
       end
@@ -24,7 +25,7 @@ module Workflow
     def update
       if @work_event.update_attributes(work_event_params)
         flash[:notice] = I18n.t(:notice, scope: [:workflow, :flash, :work_events, :update])
-        redirect_to work_events_url
+        redirect_to ["workflow", @work_event.work_category]
       else
         render :edit
       end
@@ -32,7 +33,7 @@ module Workflow
 
     def destroy
       flash[:notice] = I18n.t(:notice, scope: [:workflow, :flash, :work_events, :destroy]) if @work_event.destroy
-      redirect_to work_events_url
+      redirect_to workflow_work_categories_path
     end
 
     private
