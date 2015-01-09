@@ -33,7 +33,7 @@
           <td><%= work_item.action %></td>
           <td><%= work_item.display %></td>
           <td><%= link_to "编辑", edit_workflow_work_item_path(work_item) %></td>
-          <td><%= link_to "删除", ["workflow", work_item], method: :delete %></td>
+          <td><%= render '/workflow//work_items/delete_form', work_item: work_item %></td>
         </tr>
       <% end %>
     </table>
@@ -59,7 +59,7 @@
           <td><%= work_event.to %></td>
           <td><%= work_event.on_transitions %></td>
           <td><%= link_to "编辑", edit_workflow_work_event_path(work_event) %></td>
-          <td><%= link_to "删除", ["workflow", work_event], method: :delete %></td>
+          <td><%= render '/workflow/work_events/delete_form', work_event: work_event %></td>
         </tr>
       <% end %>
     </table>

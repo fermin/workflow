@@ -33,7 +33,7 @@ module Workflow
 
     def destroy
       flash[:notice] = I18n.t(:notice, scope: [:workflow, :flash, :work_events, :destroy]) if @work_event.destroy
-      redirect_to workflow_work_categories_path
+      redirect_to workflow_work_categories_url
     end
 
     private

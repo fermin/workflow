@@ -1,0 +1,5 @@
+<%- submit_btn_css ||= 'btn btn-link' %>
+<%= form_tag workflow_work_item_path(work_item) do %>
+  <input type="hidden" name="_method" value="delete">
+  <%= submit_tag "删除", onclick: "return confirm('确认删除？')", class: submit_btn_css %>
+<% end %>
